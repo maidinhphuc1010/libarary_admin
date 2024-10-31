@@ -1,0 +1,103 @@
+/* StoredBorrows.css */
+
+.stored-borrows {
+    padding: 30px;
+    background-color: #f9f9f9; /* Màu nền sáng */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.stored-borrows h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #333333; /* Màu chữ tối */
+    font-weight: bold;
+}
+
+/* Khung chứa nút và thanh tìm kiếm */
+.stored-borrows .header {
+    display: flex;
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: space-between; /* Căn giữa theo chiều ngang */
+    margin-bottom: 20px; /* Khoảng cách dưới khung */
+}
+
+.stored-borrows .nav-btn {
+    padding: 10px 15px;
+    background-color: #007bff; /* Màu xám */
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 1px; /* Khoảng cách giữa các nút */
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.stored-borrows .nav-btn:hover {
+    background-color: #5a6268; /* Màu xám đậm hơn khi hover */
+    transform: translateY(-2px);
+}
+
+.stored-borrows input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ced4da; /* Viền xám nhạt */
+    border-radius: 5px;
+    width: 300px; /* Chiều rộng cố định cho thanh tìm kiếm */
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.stored-borrows input[type="text"]:focus {
+    border-color: #80bdff; /* Đổi màu viền khi focus */
+    outline: none; /* Bỏ outline mặc định */
+}
+
+.stored-borrows table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.stored-borrows table th,
+.stored-borrows table td {
+    padding: 10px;
+    border: 1px solid #dee2e6; /* Viền bảng màu xám nhạt */
+    text-align: left;
+}
+
+.stored-borrows table th {
+    background-color: #007bff; /* Màu nền tiêu đề bảng */
+    color: white; /* Màu chữ tiêu đề bảng */
+    font-weight: bold;
+}
+
+.stored-borrows .button-group {
+    display: flex;
+    gap: 5px; /* Khoảng cách giữa các nút */
+}
+
+.stored-borrows .pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.stored-borrows .pagination button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Màu nền cho các nút phân trang */
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.stored-borrows .pagination button:hover {
+    background-color: #0056b3; /* Màu tối hơn khi hover */
+}
+
+.stored-borrows .pagination button:disabled {
+    background-color: #c0c0c0; /* Màu xám khi bị vô hiệu hóa */
+    cursor: not-allowed;
+}
