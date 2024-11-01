@@ -1,6 +1,6 @@
-/* AddBook.css */
+
 .add-book {
-    max-width: 100%; /* Kéo dài chiều rộng form */
+    max-width: 100%; 
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
@@ -20,7 +20,7 @@
 
 .add-book label {
     margin-bottom: 10px;
-    font-weight: bold; /* Bật chữ đậm cho label */
+    font-weight: bold; 
 }
 
 .add-book input,
@@ -29,11 +29,11 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 100%; /* Chiều rộng 100% cho input */
+    width: 100%; 
 }
 
 .add-book textarea {
-    height: 100px; /* Chiều cao cho textarea */
+    height: 100px;
 }
 
 .add-book button[type="submit"] {
@@ -51,8 +51,8 @@
 }
 
 .add-book button.back-btn {
-    background-color: #f44336; /* Màu đỏ cho nút Quay lại */
-    margin-top: 15px; /* Khoảng cách trên cho nút Quay lại */
+    background-color: #f44336; 
+    margin-top: 15px; 
     padding: 10px;
     color: white;
     border: none;

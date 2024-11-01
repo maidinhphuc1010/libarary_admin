@@ -1,4 +1,4 @@
-// EditEmployeeModal.js
+
 import React, { useState, useEffect } from 'react';
 import './EditEmployeeModal.css';
 

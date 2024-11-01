@@ -1,4 +1,4 @@
-// BorrowForm.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './BorrowForm.css';
@@ -26,7 +26,7 @@ const BorrowForm = ({ onAddBorrow }) => {
         };
 
         onAddBorrow(newBorrow);
-        navigate('/stored-borrows'); // Chuyển hướng đến trang lưu trữ phiếu mượn
+        navigate('/stored-borrows'); 
     };
 
     return (
@@ -58,7 +58,7 @@ const BorrowForm = ({ onAddBorrow }) => {
                     <input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} required />
                 </label>
                 <button type="submit">Lập Phiếu Mượn</button>
-                <button type="button" onClick={() => navigate(-1)}>Quay lại</button> {/* Nút quay lại */}
+                <button type="button" onClick={() => navigate(-1)}>Quay lại</button> 
             </form>
         </div>
     );

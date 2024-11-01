@@ -6,7 +6,6 @@ const EditBook = ({ books, onUpdate }) => {
     const { id } = useParams();
     const navigate = useNavigate();
 
-    // Tìm sách theo ID
     const bookToEdit = books.find(book => book.id === Number(id));
     const [title, setTitle] = useState(bookToEdit.title);
     const [author, setAuthor] = useState(bookToEdit.author);
@@ -28,11 +27,11 @@ const EditBook = ({ books, onUpdate }) => {
             publisher,
             quantity,
             description,
-            dateAdded: bookToEdit.dateAdded, // Giữ nguyên ngày thêm
+            dateAdded: bookToEdit.dateAdded,
         };
 
-        onUpdate(updatedBook); // Gọi hàm cập nhật
-        navigate('/books'); // Chuyển hướng về danh sách sách
+        onUpdate(updatedBook);
+        navigate('/books'); 
     };
 
     return (

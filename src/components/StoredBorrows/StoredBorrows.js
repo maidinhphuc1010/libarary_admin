@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './StoredBorrows.css';
-import EditBorrowModal from './EditBorrowModal'; // Import modal
+import EditBorrowModal from './EditBorrowModal';
 import { Link } from 'react-router-dom';
 
 const StoredBorrows = ({ borrows, setBorrows, onReturn, onNotReturned }) => {
@@ -26,7 +26,6 @@ const StoredBorrows = ({ borrows, setBorrows, onReturn, onNotReturned }) => {
     const indexOfLastBorrow = currentPage * itemsPerPage;
     const indexOfFirstBorrow = indexOfLastBorrow - itemsPerPage;
 
-    // Lọc phiếu mượn theo số điện thoại
     const filteredBorrows = borrows.filter(borrow => 
         borrow.borrowerPhone.includes(searchTerm)
     );
@@ -47,14 +46,14 @@ const StoredBorrows = ({ borrows, setBorrows, onReturn, onNotReturned }) => {
 
         setBorrows(updatedBorrows);
         setIsModalOpen(false);
-        localStorage.setItem('borrows', JSON.stringify(updatedBorrows)); // Lưu vào local storage
+        localStorage.setItem('borrows', JSON.stringify(updatedBorrows));
     };
 
     const handleDelete = (id) => {
         if (window.confirm('Bạn có chắc chắn muốn xóa phiếu mượn này?')) {
             const updatedBorrows = borrows.filter(borrow => borrow.id !== id);
             setBorrows(updatedBorrows);
-            localStorage.setItem('borrows', JSON.stringify(updatedBorrows)); // Lưu vào local storage
+            localStorage.setItem('borrows', JSON.stringify(updatedBorrows));
         }
     };
 
@@ -67,7 +66,7 @@ const StoredBorrows = ({ borrows, setBorrows, onReturn, onNotReturned }) => {
                 value={searchTerm}
                 onChange={(e) => {
                     setSearchTerm(e.target.value);
-                    setCurrentPage(1); // Reset về trang đầu khi tìm kiếm
+                    setCurrentPage(1);
                 }}
             />
             <table>

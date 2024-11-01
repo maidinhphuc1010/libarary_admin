@@ -1,4 +1,4 @@
-/* Sidebar tổng thể */
+
 .sidebar {
     position: fixed;
     top: 0;
@@ -7,31 +7,31 @@
     height: 100%;
     background-color: #333;
     padding-top: 20px;
-    z-index: 1100; /* Đảm bảo sidebar nằm phía trên navbar */
+    z-index: 1100; 
 }
 
 
 
-/* Tiêu đề */
+
 .sidebar h2 {
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 20px;
 }
 
-/* Danh sách các mục */
+
 .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
 }
 
-/* Mục chính của Sidebar */
+
 .sidebar ul li {
     position: relative;
 }
 
-/* Link các mục trong Sidebar */
+
 .sidebar ul li a {
     display: flex;
     align-items: center;
@@ -41,24 +41,24 @@
     transition: background 0.3s ease;
 }
 
-/* Khoảng cách giữa icon và văn bản */
+
 .sidebar ul li a .icon {
     margin-right: 15px;
     font-size: 1.2rem;
 }
 
-/* Khoảng cách cho icon của submenu */
+
 .submenu-icon {
     margin-left: auto;
     font-size: 0.9rem;
 }
 
-/* Hiệu ứng khi hover lên mục */
+
 .sidebar ul li a:hover {
     background-color: #575757;
 }
 
-/* Submenu */
+
 .submenu {
     background-color: #444;
     padding-left: 35px;
@@ -70,14 +70,14 @@
     margin: 5px 0;
 }
 
-/* Submenu item */
+
 .submenu li a {
     padding: 8px 0;
     color: #ddd;
     font-size: 0.95rem;
 }
 
-/* Submenu hover */
+
 .submenu li a:hover {
     color: #fff;
 }

@@ -1,14 +1,14 @@
-// Navbar.js
+
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import './Navbar.css';
 
 const Navbar = () => {
     const [dateTime, setDateTime] = useState(new Date());
     const [isMenuOpen, setMenuOpen] = useState(false);
-    const navigate = useNavigate(); // Khởi tạo useNavigate
+    const navigate = useNavigate(); 
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -27,7 +27,7 @@ const Navbar = () => {
     };
 
     const handleChangePassword = () => {
-        navigate('/change-password'); // Chuyển hướng đến trang đổi mật khẩu
+        navigate('/change-password');
     };
 
     return (

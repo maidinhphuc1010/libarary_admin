@@ -1,4 +1,4 @@
-/* EmployeeManagement.css */
+
 
 .employee-management {
     padding: 20px;
@@ -22,14 +22,14 @@
     padding: 10px;
     border: 1px solid #ced4da;
     border-radius: 4px;
-    width: 300px; /* Chiều rộng cố định cho thanh tìm kiếm */
+    width: 300px; 
     font-size: 16px;
     transition: border-color 0.3s;
 }
 
 .search-bar input:focus {
-    border-color: #007bff; /* Đổi màu viền khi focus */
-    outline: none; /* Bỏ outline mặc định */
+    border-color: #007bff;
+    outline: none; 
 }
 
 table {
@@ -58,11 +58,11 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3; /* Màu tối hơn khi hover */
+    background-color: #0056b3; 
     color: white;
 }
 
-/* EmployeeManagement.css */
+
 .employee-management {
     padding: 20px;
     background-color: #f8f9fa;

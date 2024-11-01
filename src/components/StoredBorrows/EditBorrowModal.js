@@ -1,6 +1,6 @@
-// EditBorrowModal.js
+
 import React, { useState } from 'react';
-import './EditBorrowModal.css'; // Tạo file CSS nếu cần
+import './EditBorrowModal.css'; 
 
 const EditBorrowModal = ({ borrow, onClose, onSave }) => {
     const [formData, setFormData] = useState(borrow);

@@ -1,9 +1,9 @@
-/* Navbar tổng thể */
+
 .navbar {
     position: fixed;
     top: 0;
-    left: 250px; /* Để navbar bắt đầu từ cạnh phải của sidebar */
-    width: calc(100% - 285px); /* Trừ đi chiều rộng của sidebar */
+    left: 250px; 
+    width: calc(100% - 285px); 
     height: 60px;
     background-color: #333;
     color: #fff;
@@ -16,24 +16,23 @@
 }
 
 
-/* Phần bên trái của navbar */
 .navbar-left {
     font-size: 1.2rem;
 }
 
-/* Phần bên phải của navbar */
+
 .navbar-right {
     display: flex;
     align-items: center;
-    gap: 15px; /* Dãn cách giữa các phần tử bên phải */
+    gap: 15px;
 }
 
-/* Phần thời gian */
+
 .date-time {
     font-size: 1rem;
 }
 
-/* Icon settings */
+
 .settings-icon {
     cursor: pointer;
     font-size: 1.2rem;
@@ -44,7 +43,7 @@
     color: #ddd;
 }
 
-/* Menu cài đặt khi nhấn icon */
+
 .settings-menu {
     position: absolute;
     top: 40px;
@@ -59,7 +58,7 @@
     z-index: 1000;
 }
 
-/* Nút trong menu cài đặt */
+
 .settings-menu button {
     background: none;
     border: none;

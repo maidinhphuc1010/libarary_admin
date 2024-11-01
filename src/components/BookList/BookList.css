@@ -1,11 +1,11 @@
-/* BookList.css */
+
 .book-list {
     padding: 20px;
 }
 
 .navigation {
-    display: flex; /* Sử dụng flexbox để căn chỉnh các phần tử */
-    align-items: center; /* Căn chỉnh các phần tử theo chiều dọc */
+    display: flex; 
+    align-items: center;
     margin-bottom: 15px;
 }
 
@@ -26,8 +26,8 @@
 
 .search-container {
     position: relative;
-    flex-grow: 1; /* Để thanh tìm kiếm chiếm không gian còn lại */
-    margin-left: 15px; /* Thêm khoảng cách giữa button và thanh tìm kiếm */
+    flex-grow: 1; 
+    margin-left: 15px; 
 }
 
 .search-icon {
@@ -39,7 +39,7 @@
 }
 
 .search-input {
-    padding: 10px 10px 10px 40px; /* Thêm không gian cho biểu tượng */
+    padding: 10px 10px 10px 40px;
     width: 150px;
     border: 1px solid #ccc;
     border-radius: 35px;
@@ -72,7 +72,7 @@ th {
     font-weight: bold;
 }
 
-/* Modal overlay */
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -86,7 +86,7 @@ th {
     z-index: 1000;
   }
   
-  /* Modal content */
+
   .modal-content {
     background-color: white;
     padding: 20px;

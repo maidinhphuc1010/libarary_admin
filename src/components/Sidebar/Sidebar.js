@@ -1,15 +1,14 @@
-// Sidebar.js
+
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faBook, faChartBar, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom'; // Thêm import Link từ react-router-dom
+import { Link } from 'react-router-dom'; 
 import './Sidebar.css';
 
 const Sidebar = () => {
-    const [openSubmenu, setOpenSubmenu] = useState(null); // Quản lý submenu nào đang mở
+    const [openSubmenu, setOpenSubmenu] = useState(null);
 
     const toggleSubmenu = (submenu) => {
-        // Nếu submenu đã mở thì đóng nó, nếu không thì mở submenu mới
         setOpenSubmenu(openSubmenu === submenu ? null : submenu);
     };
 
@@ -68,7 +67,7 @@ const Sidebar = () => {
                     </a>
                     {openSubmenu === 'statistics' && (
                         <ul className="submenu">
-                            <li><Link to="/quick-stats">Thống Kê Nhanh</Link></li>
+                            <li><Link to="/Statistics">Thống Kê Nhanh</Link></li>
                             <li><Link to="/reader-ranking">Top Độc Giả</Link></li>
                             <li><Link to="/book-ranking">Top Sách Yêu Thích</Link></li>
                         </ul>

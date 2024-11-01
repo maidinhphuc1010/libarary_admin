@@ -7,7 +7,7 @@ const EmployeeManagement = ({ employees, onAdd, onUpdate, onDelete }) => {
     const [currentEmployee, setCurrentEmployee] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const employeesPerPage = 5; // Số nhân viên hiển thị mỗi trang
+    const employeesPerPage = 5; 
 
     const handleOpenModal = (employee = null) => {
         setCurrentEmployee(employee);
@@ -23,7 +23,7 @@ const EmployeeManagement = ({ employees, onAdd, onUpdate, onDelete }) => {
         if (currentEmployee) {
             onUpdate(employeeData);
         } else {
-            onAdd({ ...employeeData, id: Date.now() }); // Giả sử id là timestamp
+            onAdd({ ...employeeData, id: Date.now() }); 
         }
         handleCloseModal();
     };
@@ -33,12 +33,11 @@ const EmployeeManagement = ({ employees, onAdd, onUpdate, onDelete }) => {
         employee.position.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Tính toán chỉ số bắt đầu và kết thúc cho trang hiện tại
     const indexOfLastEmployee = currentPage * employeesPerPage;
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
     const currentEmployees = filteredEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
 
-    // Tính toán số trang
+
     const totalPages = Math.ceil(filteredEmployees.length / employeesPerPage);
 
     return (

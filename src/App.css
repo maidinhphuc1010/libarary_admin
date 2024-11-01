@@ -3,8 +3,8 @@
 }
 
 .content {
-  margin-left: 250px; /* Để không bị che bởi sidebar */
+  margin-left: 250px; 
   padding: 20px;
-  flex-grow: 1; /* Chiếm toàn bộ chiều rộng còn lại */
-  background-color: #f9f9f9; /* Màu nền cho nội dung */
+  flex-grow: 1; 
+  background-color: #f9f9f9;
 }

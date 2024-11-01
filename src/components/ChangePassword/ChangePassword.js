@@ -11,7 +11,6 @@ function ChangePassword() {
     e.preventDefault();
     if (newPassword === confirmPassword) {
       setStatusMessage('Đổi mật khẩu thành công!');
-      // Reset form after successful update
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');

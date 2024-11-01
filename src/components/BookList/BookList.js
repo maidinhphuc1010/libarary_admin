@@ -1,4 +1,4 @@
-// BookList.js
+
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './BookList.css';
@@ -8,13 +8,12 @@ const BookList = ({ books, onDelete, onUpdate }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [booksPerPage] = useState(5);
 
-    // Filter books based on search term
+
     const filteredBooks = books.filter(book =>
         book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         book.author.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Pagination logic
     const indexOfLastBook = currentPage * booksPerPage;
     const indexOfFirstBook = indexOfLastBook - booksPerPage;
     const currentBooks = filteredBooks.slice(indexOfFirstBook, indexOfLastBook);
@@ -57,7 +56,7 @@ const BookList = ({ books, onDelete, onUpdate }) => {
                         <th>Số lượng</th>
                         <th>Mô tả</th>
                         <th>Ngày thêm</th>
-                        <th>Hành động</th> {/* Thêm cột cho hành động */}
+                        <th>Hành động</th> 
                     </tr>
                 </thead>
                 <tbody>

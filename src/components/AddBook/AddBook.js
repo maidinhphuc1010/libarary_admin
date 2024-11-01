@@ -1,4 +1,4 @@
-// AddBook.js
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AddBook.css';
@@ -32,9 +32,8 @@ const AddBook = ({ onAdd }) => {
             onAdd(newBook);
         }
 
-        navigate('/books'); // Chuyển hướng về danh sách sách
+        navigate('/books');
 
-        // Reset form
         setTitle('');
         setAuthor('');
         setYear('');
