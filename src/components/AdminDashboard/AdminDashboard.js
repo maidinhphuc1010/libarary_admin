@@ -23,7 +23,7 @@ const sections = [
   {
     title: "Thống kê",
     items: [
-      { icon: <FaChartBar />, label: "Thống kê nhanh", path: "/QualityReadersChart" },
+      { icon: <FaChartBar />, label: "Thống kê nhanh", path: "/statistics" },
       { icon: <FaUsers />, label: "Bảng xếp Hạng Độc Giả", path: "/reader-ranking" },
       { icon: <FaBook/>, label: "Bảng xếp Hạng Sách", path: "/book-ranking" },
     ]

@@ -10,6 +10,9 @@ import BorrowForm from './components/BorrowForm/BorrowForm';
 import StoredBorrows from './components/StoredBorrows/StoredBorrows';
 import EmployeeManagement from './components/EmployeeManagement/EmployeeManagement';
 import ReaderManagement from './components/ReaderManagement/ReaderManagement';
+import StatisticsPage from './components/StatisticsCharts/StatisticsPage';
+import TopReaders from './components/TopReaders/TopReaders';
+import TopFavoriteBooks from './components/TopFavoriteBooks/TopFavoriteBooks';
 
 const AppRoutes = ({ books, borrows, employees, readers, ...props }) => (
     <Routes>
@@ -31,6 +34,9 @@ const AppRoutes = ({ books, borrows, employees, readers, ...props }) => (
             path="/readers"
             element={<ReaderManagement readers={readers} onAdd={props.handleAddReader} onUpdate={props.handleUpdateReader} onDelete={props.handleDeleteReader} />}
         />
+        <Route path="/statistics" element={<StatisticsPage />} />
+        <Route path="/top-readers" element={<TopReaders />} />
+        <Route path="/top-book" element={<TopFavoriteBooks />} />
     </Routes>
 );
 

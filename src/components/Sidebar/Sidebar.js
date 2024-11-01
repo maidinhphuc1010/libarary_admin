@@ -67,9 +67,9 @@ const Sidebar = () => {
                     </a>
                     {openSubmenu === 'statistics' && (
                         <ul className="submenu">
-                            <li><Link to="/Statistics">Thống Kê Nhanh</Link></li>
-                            <li><Link to="/reader-ranking">Top Độc Giả</Link></li>
-                            <li><Link to="/book-ranking">Top Sách Yêu Thích</Link></li>
+                            <li><Link to="/statistics">Thống Kê Nhanh</Link></li>
+                            <li><Link to="/top-readers">Top Độc Giả</Link></li>
+                            <li><Link to="/top-book">Top Sách Yêu Thích</Link></li>
                         </ul>
                     )}
                 </li>
