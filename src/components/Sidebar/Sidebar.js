@@ -37,7 +37,7 @@ const Sidebar = () => {
                     </a>
                     {openSubmenu === 'books' && (
                         <ul className="submenu">
-                            <li><Link to="/books">Toàn bộ sách</Link></li>
+                            <li><Link to="/books">Danh Sách Sách</Link></li>
                             <li><Link to="/add-book">Thêm Sách</Link></li>
                             <li><Link to="/borrow">Lập Phiếu Mượn</Link></li>
                         </ul>

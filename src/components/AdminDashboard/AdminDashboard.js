@@ -9,23 +9,23 @@ const sections = [
     items: [
       { icon: <FaBook />, label: "Toàn Bộ Sách", path: "/books" },
       { icon: <FaBook />, label: "Thêm Sách", path: "/add-book" },
-      { icon: <FaFileAlt />, label: "Lập phiếu mượn", path: "/borrow" },
+      { icon: <FaFileAlt />, label: "Lập Phiếu Mượn", path: "/borrow" },
     ]
   },
   {
     title: "Quản lý",
     items: [
-      { icon: <FaUsers />, label: "Hồ sơ nhân viên", path: "/employees" },
-      { icon: <FaUser />, label: "Hồ sơ độc giả", path: "/readers" },
-      { icon: <FaFileAlt />, label: "Quản lý phiếu mượn", path: "/stored-borrows" },
+      { icon: <FaUsers />, label: "Hồ Sơ Nhân Viên", path: "/employees" },
+      { icon: <FaUser />, label: "Hồ Sơ Độc Giả", path: "/readers" },
+      { icon: <FaFileAlt />, label: "Quản Lý Phiếu Mượn", path: "/stored-borrows" },
     ]
   },
   {
     title: "Thống kê",
     items: [
-      { icon: <FaChartBar />, label: "Thống kê nhanh", path: "/statistics" },
-      { icon: <FaUsers />, label: "Bảng xếp Hạng Độc Giả", path: "/reader-ranking" },
-      { icon: <FaBook/>, label: "Bảng xếp Hạng Sách", path: "/book-ranking" },
+      { icon: <FaChartBar />, label: "Thống Kê Nhanh", path: "/statistics" },
+      { icon: <FaUsers />, label: "Bảng Xếp Hạng Độc Giả", path: "/top-readers" },
+      { icon: <FaBook/>, label: "Bảng Xếp Hạng Sách", path: "/top-book" },
     ]
   }
 ];
