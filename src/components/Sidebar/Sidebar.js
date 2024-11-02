@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faBook, faChartBar, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +13,12 @@ const Sidebar = () => {
 
     return (
         <div className="sidebar">
-            <h2>Menu</h2>
+            <div className="sidebar-logo">
+                <img src="link-to-your-logo.jpg" alt="Logo" className="logo" />
+            </div>
+            
+            <h2>WISDOM'S BEACON</h2>
+            <p>LIBARARY</p>
             <ul>
                 <li>
                     <Link to="/">

@@ -33,7 +33,8 @@ const Navbar = () => {
     return (
         <div className="navbar">
             <div className="navbar-title">
-                <h1>Admin</h1>
+                <h1>Admin: </h1>
+                <p>Chức Vụ: </p>
             </div>
             <div className="navbar-right">
                 <span className="date-time">
