@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHome, faUser, faBook, faChartBar, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom'; 
 import './Sidebar.css';
+import logo from '../../assets/img/logo.png'
 
 const Sidebar = () => {
     const [openSubmenu, setOpenSubmenu] = useState(null);
@@ -14,7 +15,7 @@ const Sidebar = () => {
     return (
         <div className="sidebar">
             <div className="sidebar-logo">
-                <img src="link-to-your-logo.jpg" alt="Logo" className="logo" />
+                <img src={logo} alt="Logo" className="logo" />
             </div>
             
             <h2>WISDOM'S BEACON</h2>
