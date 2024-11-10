@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import './ReaderManagement.css'; // Tạo file CSS nếu cần
-import ReaderModal from './EditReaderModal'; // Tạo modal cho độc giả
+import './ReaderManagement.css';
+import ReaderModal from './EditReaderModal';
 
 const ReaderManagement = ({ readers, onAdd, onUpdate, onDelete }) => {
     const [showModal, setShowModal] = useState(false);
     const [currentReader, setCurrentReader] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const readersPerPage = 5; // Số độc giả hiển thị mỗi trang
+    const readersPerPage = 5;
 
     const handleOpenModal = (reader = null) => {
         setCurrentReader(reader);
@@ -19,11 +19,17 @@ const ReaderManagement = ({ readers, onAdd, onUpdate, onDelete }) => {
         setShowModal(false);
     };
 
+    const generateReaderId = () => {
+        const randomId = Math.floor(100000 + Math.random() * 900000);
+        return `DG${randomId}`;
+    };
+
     const handleSave = (readerData) => {
         if (currentReader) {
             onUpdate(readerData);
         } else {
-            onAdd({ ...readerData, id: Date.now() }); // Giả sử id là timestamp
+            const newReaderData = { ...readerData, id: generateReaderId() };
+            onAdd(newReaderData);
         }
         handleCloseModal();
     };
@@ -33,12 +39,10 @@ const ReaderManagement = ({ readers, onAdd, onUpdate, onDelete }) => {
         reader.email.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-    // Tính toán chỉ số bắt đầu và kết thúc cho trang hiện tại
     const indexOfLastReader = currentPage * readersPerPage;
     const indexOfFirstReader = indexOfLastReader - readersPerPage;
     const currentReaders = filteredReaders.slice(indexOfFirstReader, indexOfLastReader);
 
-    // Tính toán số trang
     const totalPages = Math.ceil(filteredReaders.length / readersPerPage);
 
     return (

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Sidebar from './components/Sidebar/Sidebar';
@@ -12,7 +11,7 @@ import './App.css';
 
 const App = () => {
     const { books, handleAddBook, handleUpdateBook, handleDeleteBook } = useBooks();
-    const { borrows, handleAddBorrow, markAsReturned, markAsNotReturned } = useBorrows();
+    const { borrows, handleAddBorrow, markAsReturned, markAsNotReturned, handleUpdateBorrow, handleDeleteBorrow } = useBorrows();
     const { employees, handleAddEmployee, handleUpdateEmployee, handleDeleteEmployee } = useEmployees();
     const { readers, handleAddReader, handleUpdateReader, handleDeleteReader } = useReaders();
 
@@ -27,10 +26,13 @@ const App = () => {
                         borrows={borrows}
                         employees={employees}
                         readers={readers}
+                        // Passing all the handlers to the routes
                         handleAddBook={handleAddBook}
                         handleUpdateBook={handleUpdateBook}
                         handleDeleteBook={handleDeleteBook}
                         handleAddBorrow={handleAddBorrow}
+                        handleUpdateBorrow={handleUpdateBorrow}
+                        handleDeleteBorrow={handleDeleteBorrow}
                         markAsReturned={markAsReturned}
                         markAsNotReturned={markAsNotReturned}
                         handleAddEmployee={handleAddEmployee}

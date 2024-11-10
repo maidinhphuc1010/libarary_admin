@@ -23,7 +23,8 @@ const EmployeeManagement = ({ employees, onAdd, onUpdate, onDelete }) => {
         if (currentEmployee) {
             onUpdate(employeeData);
         } else {
-            onAdd({ ...employeeData, id: Date.now() }); 
+            const newId = 'NV' + String(Math.floor(100000 + Math.random() * 900000));  // Tạo id bắt đầu bằng NV và 6 số
+            onAdd({ ...employeeData, id: newId });
         }
         handleCloseModal();
     };
@@ -36,7 +37,6 @@ const EmployeeManagement = ({ employees, onAdd, onUpdate, onDelete }) => {
     const indexOfLastEmployee = currentPage * employeesPerPage;
     const indexOfFirstEmployee = indexOfLastEmployee - employeesPerPage;
     const currentEmployees = filteredEmployees.slice(indexOfFirstEmployee, indexOfLastEmployee);
-
 
     const totalPages = Math.ceil(filteredEmployees.length / employeesPerPage);
 

@@ -1,102 +1,59 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import './EditBook.css';
 
-const EditBook = ({ books, onUpdate }) => {
-    const { id } = useParams();
-    const navigate = useNavigate();
+const EditBookModal = ({ book, onClose, onSave }) => {
+    const [formData, setFormData] = useState({
+        title: '',
+        author: '',
+        genre: '',
+        year: ''
+    });
 
-    const bookToEdit = books.find(book => book.id === Number(id));
-    const [title, setTitle] = useState(bookToEdit.title);
-    const [author, setAuthor] = useState(bookToEdit.author);
-    const [year, setYear] = useState(bookToEdit.year);
-    const [genre, setGenre] = useState(bookToEdit.genre);
-    const [publisher, setPublisher] = useState(bookToEdit.publisher);
-    const [quantity, setQuantity] = useState(bookToEdit.quantity);
-    const [description, setDescription] = useState(bookToEdit.description);
+    useEffect(() => {
+        if (book) {
+            setFormData(book);
+        } else {
+            setFormData({ title: '', author: '', genre: '', year: '' });
+        }
+    }, [book]);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        
-        const updatedBook = {
-            id: bookToEdit.id,
-            title,
-            author,
-            year,
-            genre,
-            publisher,
-            quantity,
-            description,
-            dateAdded: bookToEdit.dateAdded,
-        };
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
 
-        onUpdate(updatedBook);
-        navigate('/books'); 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        onSave(formData);
     };
 
     return (
-        <div className="edit-book">
-            <h2>Chỉnh Sửa Sách</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Tiêu đề:</label>
-                <input
-                    type="text"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
-                    required
-                />
-                
-                <label>Tác giả:</label>
-                <input
-                    type="text"
-                    value={author}
-                    onChange={(e) => setAuthor(e.target.value)}
-                    required
-                />
-                
-                <label>Năm xuất bản:</label>
-                <input
-                    type="text"
-                    value={year}
-                    onChange={(e) => setYear(e.target.value)}
-                    required
-                />
-                
-                <label>Thể loại:</label>
-                <input
-                    type="text"
-                    value={genre}
-                    onChange={(e) => setGenre(e.target.value)}
-                    required
-                />
-                
-                <label>Nhà xuất bản:</label>
-                <input
-                    type="text"
-                    value={publisher}
-                    onChange={(e) => setPublisher(e.target.value)}
-                    required
-                />
-                
-                <label>Số lượng:</label>
-                <input
-                    type="number"
-                    value={quantity}
-                    onChange={(e) => setQuantity(e.target.value)}
-                    required
-                />
-                
-                <label>Mô tả:</label>
-                <textarea
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-                
-                <button type="submit">Cập Nhật</button>
-                <button type="button" onClick={() => navigate('/books')}>Quay lại</button> {/* Nút quay lại */}
-            </form>
+        <div className="modal-overlay">
+            <div className="modal-content">
+                <h2>{book ? 'Chỉnh Sửa Sách' : 'Thêm Sách'}</h2>
+                <form onSubmit={handleSubmit}>
+                    <label>
+                        Tên Sách:
+                        <input type="text" name="title" value={formData.title} onChange={handleChange} required />
+                    </label>
+                    <label>
+                        Tác Giả:
+                        <input type="text" name="author" value={formData.author} onChange={handleChange} required />
+                    </label>
+                    <label>
+                        Thể Loại:
+                        <input type="text" name="genre" value={formData.genre} onChange={handleChange} />
+                    </label>
+                    <label>
+                        Năm Xuất Bản:
+                        <input type="number" name="year" value={formData.year} onChange={handleChange} />
+                    </label>
+                    <button type="submit">Lưu</button>
+                    <button type="button" onClick={onClose}>Đóng</button>
+                </form>
+            </div>
         </div>
     );
 };
 
-export default EditBook;
+export default EditBookModal;

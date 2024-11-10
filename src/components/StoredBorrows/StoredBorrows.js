@@ -1,15 +1,54 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './StoredBorrows.css';
-import EditBorrowModal from './EditBorrowModal';
-import { Link } from 'react-router-dom';
+import BorrowModal from '../BorrowModal/BorrowModal';
 
-const StoredBorrows = ({ borrows, setBorrows, onReturn, onNotReturned }) => {
+const StoredBorrows = ({ borrows, onAdd, onUpdate, onDelete }) => {
+    const [searchTerm, setSearchTerm] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 5; 
-    const totalPages = Math.ceil(borrows.length / itemsPerPage);
+    const [statusFilter, setStatusFilter] = useState('all');
+    const [borrowsPerPage] = useState(5);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedBorrow, setSelectedBorrow] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('');
+
+    const checkOverdueBorrows = () => {
+        borrows.forEach(borrow => {
+            const isOverdue = new Date(borrow.dueDate) < new Date();
+            if (isOverdue && !borrow.isReturned && !borrow.isOverdue) {
+                borrow.isOverdue = true;
+                onUpdate(borrow); 
+            }
+        });
+    };
+
+    useEffect(() => {
+        checkOverdueBorrows();
+    }, [borrows]);
+
+    const handleStatusToggle = (id) => {
+        const updatedBorrow = borrows.find(borrow => borrow.id === id);
+        if (updatedBorrow) {
+            updatedBorrow.isReturned = !updatedBorrow.isReturned;
+            updatedBorrow.isOverdue = false; 
+            onUpdate(updatedBorrow);
+        }
+    };
+
+    const filteredBorrows = borrows.filter(borrow => {
+        const matchesSearch = 
+            borrow.borrowerPhone.includes(searchTerm) ||
+            borrow.borrowerName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+            borrow.id.toString().includes(searchTerm);
+        
+        const matchesStatus = statusFilter === 'all' || 
+                             (statusFilter === 'returned' ? borrow.isReturned : !borrow.isReturned);
+                             
+        return matchesSearch && matchesStatus;
+    });
+
+    const indexOfLastBorrow = currentPage * borrowsPerPage;
+    const indexOfFirstBorrow = indexOfLastBorrow - borrowsPerPage;
+    const currentBorrows = filteredBorrows.slice(indexOfFirstBorrow, indexOfLastBorrow);
+    const totalPages = Math.ceil(filteredBorrows.length / borrowsPerPage);
 
     const handleNextPage = () => {
         if (currentPage < totalPages) {
@@ -17,110 +56,102 @@ const StoredBorrows = ({ borrows, setBorrows, onReturn, onNotReturned }) => {
         }
     };
 
-    const handlePreviousPage = () => {
+    const handlePrevPage = () => {
         if (currentPage > 1) {
             setCurrentPage(currentPage - 1);
         }
     };
 
-    const indexOfLastBorrow = currentPage * itemsPerPage;
-    const indexOfFirstBorrow = indexOfLastBorrow - itemsPerPage;
-
-    const filteredBorrows = borrows.filter(borrow => 
-        borrow.borrowerPhone.includes(searchTerm)
-    );
-
-    const currentBorrows = filteredBorrows.slice(indexOfFirstBorrow, indexOfLastBorrow);
-    const totalFilteredPages = Math.ceil(filteredBorrows.length / itemsPerPage);
-
-    const handleEdit = (id) => {
-        const borrowToEdit = borrows.find(borrow => borrow.id === id);
-        setSelectedBorrow(borrowToEdit);
-        setIsModalOpen(true);
-    };
-
-    const handleSave = (updatedBorrow) => {
-        const updatedBorrows = borrows.map(borrow =>
-            borrow.id === updatedBorrow.id ? updatedBorrow : borrow
-        );
-
-        setBorrows(updatedBorrows);
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => {
         setIsModalOpen(false);
-        localStorage.setItem('borrows', JSON.stringify(updatedBorrows));
+        setSelectedBorrow(null);
     };
 
-    const handleDelete = (id) => {
-        if (window.confirm('Bạn có chắc chắn muốn xóa phiếu mượn này?')) {
-            const updatedBorrows = borrows.filter(borrow => borrow.id !== id);
-            setBorrows(updatedBorrows);
-            localStorage.setItem('borrows', JSON.stringify(updatedBorrows));
-        }
+    const handleEditBorrow = (borrow) => {
+        setSelectedBorrow(borrow);
+        setIsModalOpen(true);
     };
 
     return (
         <div className="stored-borrows">
             <h2>Quản Lý Phiếu Mượn</h2>
-            <input
-                type="text"
-                placeholder="Tìm kiếm theo số điện thoại..."
-                value={searchTerm}
-                onChange={(e) => {
-                    setSearchTerm(e.target.value);
-                    setCurrentPage(1);
-                }}
-            />
+
+            <div className="navigation">
+                <div className="search-container">
+                    <input
+                        type="text"
+                        placeholder="Tìm kiếm theo tên, mã phiếu, hoặc số điện thoại..."
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                </div>
+                <select onChange={(e) => setStatusFilter(e.target.value)} value={statusFilter}>
+                    <option value="all">Tất cả trạng thái</option>
+                    <option value="returned">Đã trả</option>
+                    <option value="not-returned">Chưa trả</option>
+                    <option value="overdue">Quá hạn</option>
+                </select>
+                <button onClick={openModal} className="add-borrow-btn">Thêm Phiếu Mượn</button>
+            </div>
+
             <table>
                 <thead>
                     <tr>
                         <th>Mã Phiếu</th>
-                        <th>Mã Sách</th>
+                        <th>Tên Sách</th>
                         <th>Tên Người Mượn</th>
                         <th>Số Điện Thoại</th>
                         <th>Email</th>
                         <th>Ngày Mượn</th>
                         <th>Ngày Trả Dự Kiến</th>
                         <th>Trạng Thái</th>
-                        <th>Hành Động</th>
+                        <th>Hành động</th>
                     </tr>
                 </thead>
                 <tbody>
                     {currentBorrows.map((borrow) => (
                         <tr key={borrow.id}>
                             <td>{borrow.id}</td>
-                            <td>{borrow.bookId}</td>
+                            <td>{borrow.bookName}</td>
                             <td>{borrow.borrowerName}</td>
                             <td>{borrow.borrowerPhone}</td>
                             <td>{borrow.borrowerEmail}</td>
                             <td>{borrow.borrowDate}</td>
-                            <td>{borrow.dueDate}</td>
-                            <td>{borrow.isReturned ? "Đã Trả" : "Chưa Trả"}</td>
+                            <td style={{ color: borrow.isOverdue && !borrow.isReturned ? 'red' : 'black' }}>
+                                {borrow.dueDate}
+                            </td>
+                            <td style={{ color: borrow.isOverdue ? 'red' : 'black' }}>
+                                {borrow.isReturned ? 'Đã Trả' : borrow.isOverdue ? 'Quá Hạn' : 'Chưa Trả'}
+                            </td>
                             <td>
-                                <div className="button-group">
-                                    {borrow.isReturned ? (
-                                        <button onClick={() => onNotReturned(borrow.id)}>Đánh Dấu Chưa Trả</button>
-                                    ) : (
-                                        <button onClick={() => onReturn(borrow.id)}>Đánh Dấu Đã Trả</button>
-                                    )}
-                                    <button onClick={() => handleEdit(borrow.id)}>Chỉnh Sửa</button>
-                                    <button onClick={() => handleDelete(borrow.id)}>Xóa</button>
-                                </div>
+                                <button className="edit-btn" onClick={() => handleEditBorrow(borrow)}>Chỉnh Sửa</button>
+                                <button
+                                    className={borrow.isReturned ? 'returned-btn' : 'edit-btn'}
+                                    onClick={() => handleStatusToggle(borrow.id)}
+                                >
+                                    {borrow.isReturned ? 'Đã Trả' : 'Chưa Trả'}
+                                </button>
+                                <button className="delete-btn" onClick={() => onDelete(borrow.id)}>Xóa</button>
                             </td>
                         </tr>
                     ))}
                 </tbody>
             </table>
+
             <div className="pagination">
-                <button onClick={handlePreviousPage} disabled={currentPage === 1}>Trước</button>
-                <span>Trang {currentPage} / {totalFilteredPages}</span>
-                <button onClick={handleNextPage} disabled={currentPage === totalFilteredPages}>Sau</button>
+                <button onClick={handlePrevPage} disabled={currentPage === 1}>Trước</button>
+                <span>{currentPage} / {totalPages}</span>
+                <button onClick={handleNextPage} disabled={currentPage === totalPages}>Tiếp</button>
             </div>
-            {isModalOpen && (
-                <EditBorrowModal 
-                    borrow={selectedBorrow} 
-                    onSave={handleSave} 
-                    onClose={() => setIsModalOpen(false)} 
-                />
-            )}
+
+            <BorrowModal
+                isOpen={isModalOpen}
+                onRequestClose={closeModal}
+                onAdd={onAdd}
+                onUpdate={onUpdate}
+                selectedBorrow={selectedBorrow}
+            />
         </div>
     );
 };

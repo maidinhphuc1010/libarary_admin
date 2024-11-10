@@ -39,8 +39,7 @@ const Sidebar = () => {
                     {openSubmenu === 'books' && (
                         <ul className="submenu">
                             <li><Link to="/books">Danh Sách Sách</Link></li>
-                            <li><Link to="/add-book">Thêm Sách</Link></li>
-                            <li><Link to="/borrow">Lập Phiếu Mượn</Link></li>
+                            <li><Link to="/stored-borrows">Danh Sách Phiếu Mượn</Link></li>
                         </ul>
                     )}
                 </li>
@@ -57,7 +56,6 @@ const Sidebar = () => {
                         <ul className="submenu">
                             <li><Link to="/employees">Hồ Sơ Nhân Viên</Link></li>
                             <li><Link to="/readers">Hồ Sơ Độc Giả</Link></li>
-                            <li><Link to="/stored-borrows">Quản Lý Phiếu Mượn</Link></li>
                         </ul>
                     )}
                 </li>

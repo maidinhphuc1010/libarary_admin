@@ -1,149 +1,129 @@
-
+/* BookList.css */
 .book-list {
     padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.book-list h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
 }
 
 .navigation {
-    display: flex; 
-    align-items: center;
-    margin-bottom: 15px;
-}
-
-.nav-btn {
-    margin-right: 10px;
-    padding: 10px 15px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.nav-btn:hover {
-    background-color: #0056b3;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
 .search-container {
-    position: relative;
-    flex-grow: 1; 
-    margin-left: 15px; 
-}
-
-.search-icon {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    color: #aaa;
+    flex-grow: 1;
 }
 
 .search-input {
-    padding: 10px 10px 10px 40px;
-    width: 150px;
+    width: 80%;
+    padding: 5px;
     border: 1px solid #ccc;
-    border-radius: 35px;
+    border-radius: 4px;
 }
 
-table {
+.add-book-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.add-book-btn:hover {
+    background-color: #45a049;
+}
+
+.table {
     width: 100%;
     border-collapse: collapse;
 }
 
-th, td {
+.table th,
+.table td {
     padding: 10px;
     text-align: left;
     border: 1px solid #ddd;
 }
 
-th {
-    background-color: #f2f2f2;
+.table th {
+    background-color: #f4f4f4;
 }
 
 .pagination {
-    margin-top: 15px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    margin-top: 20px;
 }
 
-.page-info {
-    margin: 0 15px;
-    font-weight: bold;
-}
-
-
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-  }
-  
-
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    width: 400px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-  }
-
-  .edit-btn {
-    background-color: #4CAF50;
-    color: white;
+.pagination button {
     padding: 5px 10px;
-    margin-right: 5px;
+    background-color: #008CBA;
+    color: white;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
-    text-decoration: none;
-
 }
 
+.pagination button:disabled {
+    background-color: #ddd;
+}
+
+.pagination span {
+    align-self: center;
+}
+
+/* Các button điều khiển */
 .delete-btn {
-    background-color: #f44336;
+    background-color: #f44336; /* Đỏ */
     color: white;
     padding: 5px 10px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    border-radius: 5px;
 }
 
-.edit-btn:hover, .delete-btn:hover {
-    opacity: 0.9;
+.delete-btn:hover {
+    background-color: #e53935; /* Đỏ đậm khi hover */
 }
 
-.nav-btn {
-    background-color: #2196F3;
+.status-toggle-btn {
+    background-color: #fbc02d; /* Màu vàng */
     color: white;
-    padding: 8px 16px;
+    padding: 5px 10px;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
-    font-size: 1rem;
-    text-decoration: none;
+    border-radius: 5px;
 }
 
-.nav-btn:hover {
-    opacity: 0.9;
+.status-toggle-btn:hover {
+    background-color: #f9a825; /* Màu vàng đậm khi hover */
 }
 
-.search-input {
-    padding: 6px;
-    width: 500px;
-    margin-left: -15px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
+/* Button chỉnh sửa */
+.edit-btn {
+    background-color: #4CAF50; /* Xanh lá */
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-  
+.edit-btn:hover {
+    background-color: #45a049; /* Xanh lá đậm khi hover */
+}
+
+/* Trạng thái sách */
+.status-available {
+    color: green; /* Còn hàng - Xanh */
+}
+
+.status-unavailable {
+    color: red; /* Hết hàng - Đỏ */
+}
